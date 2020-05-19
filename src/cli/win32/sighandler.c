@@ -5,13 +5,14 @@
  * a Linking Exception. For full terms see the included COPYING file.
  */
 
+#include "git2_util.h"
 #include <windows.h>
 
 #include "cli.h"
 
 static void (*interrupt_handler)(void) = NULL;
 
-static BOOL interrupt_proxy(DWORD signal)
+static BOOL WINAPI interrupt_proxy(DWORD signal)
 {
 	GIT_UNUSED(signal);
 	interrupt_handler();
